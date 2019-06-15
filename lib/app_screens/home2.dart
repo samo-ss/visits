@@ -1,4 +1,5 @@
 import 'dart:async';
+//import 'package:geolocator/geolocator.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -49,6 +50,7 @@ class MapSampleState extends State<MapSample> {
 
 
   Completer<GoogleMapController> _controller = Completer();
+
 
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -110,11 +112,19 @@ class MapSampleState extends State<MapSample> {
                 child: Container(
                   //height: 500.0,
                   child: GoogleMap(
-                    mapType: MapType.hybrid,
+                    scrollGesturesEnabled: true,
+                    tiltGesturesEnabled: true,
+                    rotateGesturesEnabled: true,
+                    myLocationEnabled: true,
+                    mapType: MapType.normal,
+                    zoomGesturesEnabled: true,
                     initialCameraPosition: _kGooglePlex,
+                    //initialCameraPosition: ,
                     onMapCreated: (GoogleMapController controller) {
                       _controller.complete(controller);
+
                     },
+                   // options:,
                   ),
                 ),
               ),

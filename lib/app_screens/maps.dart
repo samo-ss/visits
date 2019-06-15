@@ -1,5 +1,5 @@
 import 'dart:async';
-
+//import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'package:flutter_calendar/flutter_calendar.dart';
@@ -97,7 +97,8 @@ class MapSampleState extends State<MapSample> {
         child: Container(
           //height: 500.0,
       child: GoogleMap(
-        mapType: MapType.hybrid,
+        //myLocationButtonEnabled: true,
+        mapType: MapType.terrain,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
@@ -112,14 +113,16 @@ class MapSampleState extends State<MapSample> {
       new Positioned(
           top: 600.0,
           left: 7.0,
-          right: 55.0,
+          right: 40.0,
           child: CarouselSlider(
               //items: null
             height: 120.0,
             enableInfiniteScroll: false,
+          //  itemCount: snapshot.data.length,
 
-            items: [1, 2, 3, 4, 5].map((i) {
-              return Builder(
+         //   items: [1, 2, 3, 4, 5].map((i) {
+    items: [1, 2, 3, 4, 5].map((i) {
+      return Builder(
                 builder: (BuildContext context) {
                   return Container(
                     //  child: Text(snapshot.data[index].data["visitedId"]),
