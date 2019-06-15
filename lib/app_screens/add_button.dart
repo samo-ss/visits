@@ -18,7 +18,7 @@ class AddButton extends StatelessWidget {
               icon: Icon(Icons.add_circle,color: Colors.blueAccent,),
               iconSize: 100.0,
 
-              onPressed: null
+              onPressed: null,
           ),
         ),
     );

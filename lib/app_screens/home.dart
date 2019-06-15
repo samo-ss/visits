@@ -1,9 +1,7 @@
-import 'dart:async';
-import 'dart:io';
+//import 'dart:async';
+//import 'dart:io';
 import 'package:flutter/material.dart';
 import './check_out.dart';
-//import 'package:carousel_slider/carousel_slider.dart';
-//import 'package:firebase_codelab/libs/swipe_button.dart';
 import 'package:swipe_button/swipe_button.dart';
 
 
@@ -90,12 +88,9 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Align(
-                      //  widthFactor: 0.00,
-                       // heightF
-                      // Iactor: 1.0,null
                         child:IconButton(
                   icon: Icon(Icons.keyboard_arrow_right, size: 30.0,color: Colors.white,),
-                          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> HomePage1())),
+                          //onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> HomePage1())),
                           //  Icon(Icons.arrow_forward,size: 20.0,color:buttonName == "login" ? loginColour : logoutColour,),
                   
 
@@ -122,17 +117,8 @@ class HomePage extends StatelessWidget {
                 },
               ),
 
-
-
-
-
-
-
             ),
           ),
-
-
-
 
         ],
       ),
@@ -141,18 +127,3 @@ class HomePage extends StatelessWidget {
   }
 }
 
-      /* Icon(
-+           FavoriteWidget(),
--             Icons.star,
--             color: Colors.red[500],
--           ), child: Container(
-        alignment: Alignment.topRight,
-        color: Colors.white,
-        width: 400.0,
-        height: 200.0,
-
-      ),
-
-    );
-  }
-*/

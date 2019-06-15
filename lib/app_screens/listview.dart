@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar/flutter_calendar.dart';
 import 'package:infinite_listview/infinite_listview.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import './home2.dart';
+import './maps.dart';
 import './add_button.dart';
 import './home.dart';
+import 'package:g2x_week_calendar/g2x_simple_week_calendar.dart';
 
 
 void main() => runApp(new MyApp());
@@ -24,12 +25,15 @@ class MyApp extends StatelessWidget{
 }
 class MyHomePage extends StatefulWidget{
   MyHomePage({Key key, this.title}):super(key:key);
+
   final String title;
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 
 }
 class _MyHomePageState extends State<MyHomePage>{
+
+  DateTime dateCallback;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -58,6 +62,15 @@ class _MyHomePageState extends State<MyHomePage>{
         new Container(
         // height: 200,
         child: SafeArea(
+            child: G2xSimpleWeekCalendar(DateTime.now(), dateCallback: (date) => dateCallback,
+              selectedTextStyle: const TextStyle(color: Colors.blueAccent),)
+          //selectedTextStyle = const TextStyle(color: Colors.red),)
+
+
+
+
+
+          /*
         child: new Calendar(
             //showTodayAction: false,
             onSelectedRangeChange: (range) =>
@@ -67,6 +80,10 @@ class _MyHomePageState extends State<MyHomePage>{
     //changeDate(date)
     },
     ),
+          */
+
+
+
     ),
     ),
     Expanded(
@@ -122,6 +139,7 @@ class _ListPageState extends State<ListPage> {
     super.initState();
     _data = getPosts();
   }
+  Axis scrollDirection = null;
 
   @override
   Widget build(BuildContext context) {
@@ -143,8 +161,11 @@ class _ListPageState extends State<ListPage> {
             }else {
 
               return ListView.builder(
+
+
                   itemCount: snapshot.data.length,
                   itemBuilder: (__, index) {
+                 //   scrollDirection = Axis.vertical;
                     return ListTile(
                     //  title: Text(snapshot.data[index].data["visitedId"]),
                       title: Text(snapshot.data[index].data["businessName"]),

@@ -73,7 +73,8 @@ class HomePage1 extends StatelessWidget {
                       if (result == SwipePosition.SwipeRight) {
                         print("Loading");
                         // Navigator.pushNamed(context, pageRoute);
-                        Navigator.pop(context, MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+                        Navigator.pop(context, MaterialPageRoute(builder: (BuildContext context) => HomePage1()));
+
                       } else {}
                     },
                   ),
