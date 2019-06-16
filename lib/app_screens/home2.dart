@@ -11,7 +11,7 @@ import './add_button.dart';
 import 'package:g2x_week_calendar/g2x_simple_week_calendar.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:location/location.dart';
+//import 'package:location/location.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 

@@ -124,8 +124,6 @@ class _ListPageState extends State<ListPage> {
     var firestore= Firestore.instance;
     QuerySnapshot qn= await firestore.collection("customer").getDocuments();
 
-
-
     return qn.documents;
   }
 

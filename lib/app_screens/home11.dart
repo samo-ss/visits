@@ -9,7 +9,7 @@ import 'package:g2x_week_calendar/g2x_simple_week_calendar.dart';
 //import 'package:intl/intl.dart';
 //import 'package:location/location.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
@@ -32,7 +32,7 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
- /*ompleter<GoogleMapController> _controller = Completer();
+  Completer<GoogleMapController> _controller = Completer();
 
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -44,7 +44,7 @@ class MapSampleState extends State<MapSample> {
       bearing: 192.8334901395799,
       target: LatLng(12.971599, 77.594566),
       tilt: 59.440717697143555,
-      zoom: 19.151926040649414);*/
+      zoom: 19.151926040649414);
 
   DateTime dateCallback;
 
@@ -95,7 +95,7 @@ class MapSampleState extends State<MapSample> {
                   //height: 500.0,
                   child: GoogleMap(
                     //myLocationButtonEnabled: true,
-              /*    scrollGesturesEnabled: true,
+                    scrollGesturesEnabled: true,
                     tiltGesturesEnabled: true,
                     rotateGesturesEnabled: true,
                     myLocationEnabled: true,
@@ -103,9 +103,13 @@ class MapSampleState extends State<MapSample> {
                     zoomGesturesEnabled: true,
                     //mapType: MapType.terrain,
                     initialCameraPosition: _kGooglePlex,
+                    //  initialCameraPosition: CameraPosition(target: null),
                     onMapCreated: (GoogleMapController controller) {
                       _controller.complete(controller);
-                    },*/
+                    },
+                    markers: {
+                      cust1Marker, cust2Marker
+                    },
                   ),
                 ),
               ),
@@ -113,7 +117,7 @@ class MapSampleState extends State<MapSample> {
           ],
           ),
 
-          new Positioned(
+          /*      new Positioned(
               top: 600.0,
               left: 7.0,
               right: 40.0,
@@ -153,7 +157,9 @@ class MapSampleState extends State<MapSample> {
 
 
 
-          )
+          )*/
+
+          _buildContainer(),
         ],
       ),
 
@@ -161,6 +167,128 @@ class MapSampleState extends State<MapSample> {
       // ),
     );
   }
+
+  Widget _buildContainer() {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 20.0),
+        height: 100.0,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            SizedBox(width: 10.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _boxes(
+                  "https://www.google.com/search?q=pickcel+bangalore&client=ubuntu&hs=4WV&channel=fs&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjM5cnJ5e3iAhXI6Y8KHR1vC0UQ_AUIESgC&biw=1299&bih=639#imgrc=6kuh62vgmvC7sM:",
+                  12.916157, -77.628691, "Pickcel"),
+
+            ),
+            SizedBox(width: 10.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _boxes(
+                  "https://www.google.com/search?q=pickcel+bangalore&client=ubuntu&hs=4WV&channel=fs&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjM5cnJ5e3iAhXI6Y8KHR1vC0UQ_AUIESgC&biw=1299&bih=639#imgrc=6kuh62vgmvC7sM:",
+                  12.916157, -77.62, "Pickcel2"),
+
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _boxes(String _image, double lat, double long, String custName) {
+    return GestureDetector(
+      onTap: () {
+        //gotolocation
+      },
+      child: Container(
+        child: new FittedBox(
+          child: Material(
+            color: Colors.white,
+            elevation: 14.0,
+            borderRadius: BorderRadius.circular(12.0),
+            // shadowColor: Colors.blueGrey,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  width: 600,
+                  height: 200,
+                  child: ClipRRect(
+                    borderRadius: new BorderRadius.circular(12.0),
+                    child: Image(
+                      //fit: BoxFit.fill,
+                      fit: BoxFit.fill,
+                      image: NetworkImage(_image),
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _myDetailsContainer(custName),
+
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _myDetailsContainer(String custName) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+         // padding: const EdgeInsets.all(10.0),
+          child: Container(
+            alignment: Alignment.center,
+
+              child: Text(custName,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  
+                ),
+
+                
+
+              )),
+        ),
+        // SizedBox(height: 5.0),
+        // Container(
+        // child: ,
+        //)
+      ],
+    );
+  }
+
+
+  Marker cust1Marker = Marker(
+    markerId: MarkerId('cust1'),
+    position: LatLng(12.9128836, -77.6144108999994),
+    infoWindow: InfoWindow(title: 'kunal'),
+    icon: BitmapDescriptor.defaultMarkerWithHue(
+      BitmapDescriptor.hueBlue,
+    ),
+  );
+  Marker cust2Marker = Marker(
+    markerId: MarkerId('cust2'),
+    position: LatLng(12.916157, -77.628691),
+    infoWindow: InfoWindow(title: 'saharsh'),
+    icon: BitmapDescriptor.defaultMarkerWithHue(
+      BitmapDescriptor.hueBlue,
+    ),
+  );
 }
+
 
 

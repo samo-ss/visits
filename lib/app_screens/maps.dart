@@ -2,15 +2,12 @@ import 'dart:async';
 //import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-//import 'package:flutter_calendar/flutter_calendar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import './listview.dart';
 import './add_button.dart';
-//import './app_screens/home1.dart';
 import 'package:g2x_week_calendar/g2x_simple_week_calendar.dart';
-//import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:intl/intl.dart';
-import 'package:location/location.dart';
+//import 'package:intl/intl.dart';
+//import 'package:location/location.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -98,7 +95,13 @@ class MapSampleState extends State<MapSample> {
           //height: 500.0,
       child: GoogleMap(
         //myLocationButtonEnabled: true,
-        mapType: MapType.terrain,
+        scrollGesturesEnabled: true,
+        tiltGesturesEnabled: true,
+        rotateGesturesEnabled: true,
+        myLocationEnabled: true,
+        mapType: MapType.normal,
+        zoomGesturesEnabled: true,
+        //mapType: MapType.terrain,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
@@ -125,7 +128,7 @@ class MapSampleState extends State<MapSample> {
       return Builder(
                 builder: (BuildContext context) {
                   return Container(
-                    //  child: Text(snapshot.data[index].data["visitedId"]),
+                      child: Text("container"),
                     width: MediaQuery
                         .of(context)
                         .size
